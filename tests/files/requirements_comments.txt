@@ -1,0 +1,3 @@
+#I only want django
+
+Django==1.4.5

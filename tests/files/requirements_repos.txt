@@ -1,0 +1,12 @@
+# These packages are all linked in repo format, as seen here: http://www.pip-installer.org/en/latest/requirements.html
+# I'm also including gitconfig, to make sure the parser doesn't ignore it
+
+git+git://github.com/kennethreitz/legit.git
+
+svn+git://github.com/kennethreitz/legit.git
+
+hg+git://github.com/kennethreitz/legit.git
+
+bzr+git://github.com/kennethreitz/legit.git
+
+gitconfig==0.0.2
