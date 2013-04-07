@@ -29,8 +29,8 @@ and checkmyreqs lets you quickly check if your packages are ready to move as wel
 
 Installation
 ============
-
 ::
+
     pip install checkmyreqs
 
 ----
