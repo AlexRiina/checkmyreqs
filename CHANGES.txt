@@ -1,2 +1,3 @@
 v<0.1.0>, <Apr.07.2013> -- Initial release.
 v<0.1.1>, <Apr.07.2013> -- Adding git repo as homepage
+v<0.1.2>, <Apr.07.2013> -- Updating docs to show usage
