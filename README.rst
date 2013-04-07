@@ -6,11 +6,11 @@ checkmyreqs allows you to check the packages in your requirements file against a
 
 This command will check 2 requirements files, to see if their packages are compatible with Python 3.3 ::
 
-    python checkmyreqs.py -f requirements.txt,requirements_dev.txt -p 3.3
+    checkmyreqs -f requirements.txt,requirements_dev.txt -p 3.3
 
 If you don't pass in a filename, it will use requirements.txt in the directory it is called ::
 
-    python checkmyreqs.py -p 3.2
+    checkmyreqs -p 3.2
 
 The output is a list of packages not supported by the given Python version.
 
