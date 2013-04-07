@@ -15,7 +15,6 @@ except:
     pass
 
 APP_NAME = 'checkmyreqs'
-APP_SCRIPT = './legit_r'
 VERSION = '0.1.0'
 
 # Grab requirments.
