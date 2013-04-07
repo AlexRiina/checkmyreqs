@@ -53,7 +53,7 @@ settings.update(
     author_email='dustinrcollins@gmail.com',
     packages=['tests'],
     scripts=['checkmyreqs.py'],
-    url='http://pypi.python.org/pypi/',
+    url='https://github.com/dustinmm80/checkmyreqs',
     license='LICENSE.txt',
     description='Check your project requirements for Python version compatibility',
     long_description=open('README.rst').read(),
