@@ -39,7 +39,6 @@ if sys.argv[-1] == 'build':
     sys.argv.append('py2exe')
 
     settings.update(
-        console=[{'script': APP_SCRIPT}],
         zipfile = None,
         options = {
             'py2exe': {
