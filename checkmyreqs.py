@@ -11,6 +11,7 @@ from __future__ import print_function
 
 import argparse
 import os
+import sys
 
 try:
     # Different location in Python 3
@@ -48,7 +49,7 @@ def parse_requirements_file(req_file):
     """
     print(''.join([
         Fore.CYAN,
-        req_file,
+        req_file.name,
         '\r\n',
         '----------------------------------------------------------'
     ])
@@ -58,22 +59,21 @@ def parse_requirements_file(req_file):
 
     packages = {}
 
-    with open(os.path.join(BASE_PATH, req_file)) as f:
-        for line in f:
+    for line in req_file:
+        line = line.strip()
+        for prefix in IGNORED_PREFIXES:
+            if not line or line.startswith(prefix):
+                line = None
+                break
+        if line:
             line = line.strip()
-            for prefix in IGNORED_PREFIXES:
-                if not line or line.startswith(prefix):
-                    line = None
-                    break
-            if line:
-                line = line.strip()
 
-                if '==' in line:
-                    package_name, version = line.split('==')
-                else:
-                    package_name, version = (line, '')
+            if '==' in line:
+                package_name, version = line.split('==')
+            else:
+                package_name, version = (line, '')
 
-                packages[package_name] = version
+            packages[package_name] = version
 
     return packages
 
@@ -150,17 +150,18 @@ def main():
 
     parser.add_argument(
         '-f', '--files', default='requirements.txt', required=False,
-        help='requirements file(s) to check, comma-separated without spaces'
+        help='requirements file(s) to check',
+        type=argparse.FileType('r'), nargs="+"
     )
     parser.add_argument(
-        '-p', '--python', required=True,
-        help='Version of Python to check against'
+        '-p', '--python', required=False,
+        help='Version of Python to check against. E.g. 2.5',
+        default='.'.join(map(str, sys.version_info))
     )
 
     args = parser.parse_args()
 
-    for f in args.files.split(','):
-        filepath = os.path.abspath(f)
+    for filepath in args.files:
         packages = parse_requirements_file(filepath)
         check_packages(packages, args.python)
         print('\n')

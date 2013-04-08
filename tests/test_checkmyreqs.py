@@ -21,7 +21,7 @@ class TestRequirementFileParserTestCases(unittest.TestCase):
         """
         Test that script works with an empty requirements file
         """
-        packages = parse_requirements_file(os.path.join(BASE_PATH, 'files/requirements_empty.txt'))
+        packages = parse_requirements_file(open(os.path.join(BASE_PATH, 'files/requirements_empty.txt')))
 
         self.assertEqual(len(packages), 0)
 
@@ -29,7 +29,7 @@ class TestRequirementFileParserTestCases(unittest.TestCase):
         """
         Test that a requirements file with comments does not throw errors
         """
-        packages = parse_requirements_file(os.path.join(BASE_PATH, 'files/requirements_comments.txt'))
+        packages = parse_requirements_file(open(os.path.join(BASE_PATH, 'files/requirements_comments.txt')))
 
         # The file has one package, Django
         self.assertEqual(len(packages), 1)
@@ -38,7 +38,7 @@ class TestRequirementFileParserTestCases(unittest.TestCase):
         """
         Test that repository links are skipped
         """
-        packages = parse_requirements_file(os.path.join(BASE_PATH, 'files/requirements_repos.txt'))
+        packages = parse_requirements_file(open(os.path.join(BASE_PATH, 'files/requirements_repos.txt')))
 
         # packages should only include the gitconfig package
         self.assertEqual(len(packages), 1)
